@@ -1,4 +1,3 @@
-Just r
-### `npm start`
+Simply run `npm install`, this will load modules
 
-### `npm run build`
+then `npm start`
