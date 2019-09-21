@@ -59,22 +59,57 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <h1>Form AU</h1>
-                <form ref={"auForm"}>
-                    <label>
-                        Postcode:
-                        <input type="number" name="postcode" maxLength="4" minLength="4" required onChange={this.handleChange}/>
-                    </label>
-                    <label>
-                        Suburb:
-                        <input type="text" name="suburb" required onChange={this.handleChange}/>
-                    </label>
-                    <label>
-                        State:
-                        <input type="text" name="state" required onChange={this.handleChange}/>
-                    </label>
-                    <input type="submit" value="Submit" onClick={this.handleSubmit}/>
-                </form>
+                <div className="container">
+                    <div className="screen">
+                        <div className="screen-header">
+                            <div className="screen-header-left">
+                                <div className="screen-header-button close"></div>
+                                <div className="screen-header-button maximize"></div>
+                                <div className="screen-header-button minimize"></div>
+                            </div>
+                            <div className="screen-header-right">
+                                <div className="screen-header-ellipsis"></div>
+                                <div className="screen-header-ellipsis"></div>
+                                <div className="screen-header-ellipsis"></div>
+                            </div>
+                        </div>
+                        <div className="screen-body">
+                            <div className="screen-body-item left">
+                                <div className="app-title">
+                                    <span>Lawpath</span>
+                                </div>
+                                <div className="app-contact">SUBMITTED BY: A</div>
+                            </div>
+                            <div className="screen-body-item">
+                                <div className="app-form">
+                                    <form ref={"auForm"} className="background">
+                                        <div className="app-form-group">
+                                            <label>
+                                                Postcode:
+                                                <input className="app-form-control" type="number" name="postcode" max="9999" min="0" pattern="\d{4}" required onChange={this.handleChange}/>
+                                            </label>
+                                        </div>
+                                        <div className="app-form-group">
+                                            <label>
+                                                Suburb:
+                                                <input className="app-form-control" type="text" name="suburb" required onChange={this.handleChange}/>
+                                            </label>
+                                        </div>
+                                        <div className="app-form-group">
+                                            <label>
+                                                State:
+                                                <input className="app-form-control" type="text" name="state" required onChange={this.handleChange}/>
+                                            </label>
+                                        </div>
+                                        <div className="app-form-group buttons">
+                                            <button className="app-form-button" onClick={this.handleSubmit}>Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
