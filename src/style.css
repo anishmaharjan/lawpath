@@ -1,4 +1,4 @@
-.form-style{
+/*.form-style{
     font: 95% Arial, Helvetica, sans-serif;
     max-width: 400px;
     margin: 10px auto;
@@ -74,4 +74,60 @@
 .form-style input[type="submit"]:hover,
 .form-style input[type="button"]:hover{
     background: #2EBC99;
+}
+*/
+body {
+    /*background-color: #ccc;*/
+}
+
+.container{
+    max-width: 500px;
+    margin: 10px auto;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.form-style input 
+{
+    /*-webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;*/
+    /*outline: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background: #fff;
+    margin-bottom: 4%;
+    color: #555;
+    font: 95% Arial, Helvetica, sans-serif;*/
+    box-sizing: border-box;
+    width: 100%;
+    padding: 3%;
+    border: 1px solid #ccc;
+}
+.form-style input:focus
+{
+    /*box-shadow: 0 0 5px #43D1AF;*/
+    padding: 3%;
+    border: 1px solid #43D1AF;
+}
+.input-group {
+    margin-bottom: 13px;
+}
+
+button{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    /*width: 100%;*/
+    padding: 3%;
+    background: #43D1AF;
+    border-bottom: 2px solid #30C29E;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;  
+    color: #fff;
+}
+small{
+        color: gray;
 }
