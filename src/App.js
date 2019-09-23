@@ -1,5 +1,4 @@
 import React from 'react';
-// import './App.css';
 import './style.css';
 import Request from './Service/api'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
@@ -20,21 +19,23 @@ class App extends React.Component {
     }
 
     /**
-    * Notiication module
+    * Notification module
     */
     notify = (type) => {
-        return () => {
-          switch (type) {
-            case 'success':
-              NotificationManager.success('Success', 'The address match');
-              break;
-            case 'warning':
-              NotificationManager.warning('Not valid', 'The postcode does not match state or suburb', 5000);
-              break;
-            case 'apiError':
-              NotificationManager.error('Error', 'Failed to retrieve data from AUPOST', 5000);
-              break;
-          }
+      switch (type) {
+        case 'success':
+          NotificationManager.success('Success', 'The postcode, suburb and state entered are valid');
+          break;
+        case 'suburb':
+          NotificationManager.warning('Not valid', `The postcode '${this.state.postcode}' does not match suburb '${this.state.suburb}'`, 5000);
+          break;
+        case 'state':
+          NotificationManager.warning('Not valid', `The suburb '${this.state.suburb}' does not exist in state '${this.state.state}'`, 5000);
+          break;
+        case 'apiError':
+          NotificationManager.error('Error', 'Failed to retrieve data from AUPOST', 5000);
+          break;
+        default:
       }
     };
 
@@ -50,6 +51,7 @@ class App extends React.Component {
     */
     handleSubmit = (event) => {
         let validationFlag = false;
+        let matchFlag = '';
 
         /**
         * Runs HTML5 validation in the forms
@@ -66,9 +68,14 @@ class App extends React.Component {
                         if (point.address.suburb.toLowerCase() === this.state.suburb.toLowerCase()) {
                             if (point.address.state.toLowerCase() === this.state.state.toLowerCase()) {
                                 validationFlag = true;
+                            } else {
+                                matchFlag = 'state';
                             }
+                        } else{
+                            matchFlag = 'suburb';
                         }
-
+                        
+                        return true;
                     });
 
                 } else {
@@ -80,14 +87,11 @@ class App extends React.Component {
             })
             .catch(error => {
                 this.notify('apiError')
-                console.log(error)
             })
             .finally(() => {
                 if (!validationFlag) {
-                    console.log("Validation error")
-                    this.notify('warning')
+                    this.notify(matchFlag)
                 } else {
-                    console.log("Successfully found")
                     this.notify("success");
 
                 }

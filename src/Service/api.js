@@ -4,7 +4,7 @@ const API_ROOT = {
     'baseURL': 'https://digitalapi.auspost.com.au/locations/v2/',
 };
 
-const oldKey = '872608e3-4530-4c6a-a369-052accb03ca8';
+// const oldKey = '872608e3-4530-4c6a-a369-052accb03ca8';
 const myApiKey = 'gOdcsgK41uMcyFTl1S6fcr7e5yRNRnyN';
 
 const getHeaderConfig = () => {
